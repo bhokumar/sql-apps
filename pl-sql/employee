@@ -1,0 +1,29 @@
+create table EMPLOYEE(
+EMPNO number,
+EMPNAME varchar2(20),
+SALARY number,
+Deptno    NUMBER(2) NOT NULL
+);
+
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'BILL',12000,5);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(11,'SOLOMN',10000,5);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(12,'SUSAN',10000,5);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(13,'WENDY',9000,1);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'BENJAMIN',7500,1);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'TOM',7600,1);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'HENRY',8500,2);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'ROBERT',9500,2);
+insert into EMPLOYEE(EMPNO,EMPNAME,SALARY,DEPTNO) values(10,'PAUL',7700,2);
+
+select empno, empname, salary, deptno, row_number()over(order by salary) from employee;
+
+//Query to find highest salary in every department 
+select salary from (select empno, empname, salary,deptno,ROW_NUMBER() OVER (PARTITION BY deptno
+                           ORDER BY salary DESC) as rn from employee ) where rn between 1 and 1;
+
+select salary from (select salary,ROW_NUMBER() OVER (PARTITION BY deptno
+                           ORDER BY salary DESC) as rn from employee ) where rn=1;
+
+select salary from (select salary,ROW_NUMBER() OVER ( ORDER BY salary DESC) as rn from employee ) where rn=4;
+
+select salary from (select salary,ROW_NUMBER() OVER ( ORDER BY salary DESC nulls last) as rn from employee ) where rn=1;
