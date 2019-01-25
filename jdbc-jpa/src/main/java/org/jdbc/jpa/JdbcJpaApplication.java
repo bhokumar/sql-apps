@@ -1,5 +1,6 @@
 package org.jdbc.jpa;
 
+import java.util.Date;
 import java.util.List;
 
 import org.jdbc.jpa.modal.Person;
@@ -26,6 +27,10 @@ public class JdbcJpaApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		List<Person> persons = personJdbcDAO.findAll();
 		logger.info("All Persons --> {}", persons);
+		logger.info("\nUser from findbyId   --->{}", personJdbcDAO.findById(10001));
+		logger.info("\nUser from Delete By   --->{}", personJdbcDAO.deleteById(10001));
+		logger.info("\nUser from insert   --->{}", personJdbcDAO.insert(new Person(10005, "Raj", "Banglore", new Date())));
+		logger.info("\nUser from Update   --->{}", personJdbcDAO.update(new Person(10005, "bijendra", "Delhi", new Date())));
 	}
 
 }
