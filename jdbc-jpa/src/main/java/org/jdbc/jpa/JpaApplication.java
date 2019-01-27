@@ -1,8 +1,6 @@
 package org.jdbc.jpa;
 
-import java.util.Date;
-
-import org.jdbc.jpa.modal.Person;
+import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.repositories.CourseRepository;
 import org.jdbc.jpa.repositories.PersonJPARepository;
 import org.slf4j.Logger;
@@ -29,7 +27,7 @@ public class JpaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("\nFound User --> {}", jpaRepository.findbyId(10001));
+		/*logger.info("\nFound User --> {}", jpaRepository.findbyId(10001));
 		Person person = new Person();
 		
 		logger.info("\nUpdate User --> {}", jpaRepository.update(new Person(10001, "Rathore", "Noida", new Date())));
@@ -42,5 +40,10 @@ public class JpaApplication implements CommandLineRunner{
 		logger.info("All Users {}", jpaRepository.findAll());
 		
 		logger.info("\nCourse found {}", courseRepository.findbyId(100000L));
+		logger.info("Deleting Course!");
+		courseRepository.deleteById(1);*/
+		
+		//logger.info("create a new course", courseRepository.save(new Course("View JS")));
+		courseRepository.playWithEntityManager();
 	}
 }
