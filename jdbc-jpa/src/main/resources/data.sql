@@ -12,5 +12,5 @@ insert into person(id, name, location, birth_date) values(10002, 'James', 'Newyo
 insert into person(id, name, location, birth_date) values(10003, 'Jack', 'London', sysdate());
 
 
-insert into course(id, name) values(11001,'Angular');
-insert into course(id, name) values(11002,'React');
+insert into course(id, name, last_updatetime, creation_time) values(11001,'Angular', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11002,'React', sysdate(), sysdate());
