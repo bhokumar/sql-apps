@@ -3,6 +3,7 @@ package org.jdbc.jpa;
 import java.util.Date;
 
 import org.jdbc.jpa.modal.Person;
+import org.jdbc.jpa.repositories.CourseRepository;
 import org.jdbc.jpa.repositories.PersonJPARepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,9 @@ public class JpaApplication implements CommandLineRunner{
 	
 	@Autowired
 	PersonJPARepository jpaRepository;
+	
+	@Autowired
+	CourseRepository courseRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
@@ -36,5 +40,7 @@ public class JpaApplication implements CommandLineRunner{
 		jpaRepository.deleteById(10002);
 		
 		logger.info("All Users {}", jpaRepository.findAll());
+		
+		logger.info("\nCourse found {}", courseRepository.findbyId(100000L));
 	}
 }
