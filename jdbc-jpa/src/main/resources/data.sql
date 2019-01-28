@@ -14,3 +14,19 @@ insert into person(id, name, location, birth_date) values(10003, 'Jack', 'London
 
 insert into course(id, name, last_updatetime, creation_time) values(11001,'Angular', sysdate(), sysdate());
 insert into course(id, name, last_updatetime, creation_time ) values(11002,'React', sysdate(), sysdate());
+
+insert into passport(id, number) values(40001, 'E123456');
+insert into passport(id, number) values(40002, 'N123457');
+insert into passport(id, number) values(40003, 'L123458');
+
+insert into student(id, name, passport_id) values(20001, 'bhoopendra', '40001');
+insert into student(id, name, passport_id) values(20002, 'Adam', '40002');
+insert into student(id, name, passport_id) values(20003, 'Jane', '40003');
+
+insert into review(id, rating, description) values(50001, '4.2', 'Great Course');
+insert into review(id, rating, description) values(50002, '4.3', 'Wonderful Course');
+insert into review(id, rating, description) values(50003, '4.4', 'Awesome Course');
+insert into review(id, rating, description) values(50004, '4.5', 'Great Course');
+insert into review(id, rating, description) values(50005, '4.6', 'Great Course');
+insert into review(id, rating, description) values(50006, '4.7', 'Great Course');
+insert into review(id, rating, description) values(50007, '4.8', 'Great Course');

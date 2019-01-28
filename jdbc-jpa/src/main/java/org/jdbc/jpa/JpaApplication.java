@@ -1,8 +1,8 @@
 package org.jdbc.jpa;
 
-import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.repositories.CourseRepository;
 import org.jdbc.jpa.repositories.PersonJPARepository;
+import org.jdbc.jpa.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,13 @@ public class JpaApplication implements CommandLineRunner{
 	private Logger logger = LoggerFactory.getLogger(JpaApplication.class);
 	
 	@Autowired
-	PersonJPARepository jpaRepository;
+	private PersonJPARepository jpaRepository;
 	
 	@Autowired
-	CourseRepository courseRepository;
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private StudentRepository studentRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
@@ -44,6 +47,11 @@ public class JpaApplication implements CommandLineRunner{
 		courseRepository.deleteById(1);*/
 		
 		//logger.info("create a new course", courseRepository.save(new Course("View JS")));
-		courseRepository.playWithEntityManager();
+		//courseRepository.playWithEntityManager();
+		
+		/**********************************************Student Repository************************/
+		logger.info("Creating Student with Passport ");
+		
+		studentRepository.saveStudentWithPassport();
 	}
 }
