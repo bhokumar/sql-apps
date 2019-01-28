@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.jdbc.jpa.modal.Course;
+import org.jdbc.jpa.modal.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -56,5 +57,20 @@ public class CourseRepository {
 		
 		course1.setName("MicroServices in 100 steps");
 		entityManager.flush();
+	}
+	
+	public void addReviewtoCourse() {
+		Course course = findbyId(11001L);
+		logger.info("Reviews --> {}", course.getReviews());
+		Review review1 = new Review("Great HandsOn", "5");
+		Review review2 =new Review("Hatsoff", "5");
+		course.addReview(review1);
+		course.addReview(review2);
+		
+		review1.setCourse(course);
+		review2.setCourse(course);
+		
+		entityManager.persist(review1);
+		entityManager.persist(review2);
 	}
 }

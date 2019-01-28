@@ -3,6 +3,7 @@ package org.jdbc.jpa.modal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -10,6 +11,9 @@ public class Review {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@ManyToOne
+	private Course course;
 	
 	private String description;
 	
@@ -44,9 +48,17 @@ public class Review {
 		return id;
 	}
 
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", description=" + description + ", rating=" + rating + "]";
+		return "\nReview [id=" + id + ", description=" + description + ", rating=" + rating + "]";
 	}
 	
 }

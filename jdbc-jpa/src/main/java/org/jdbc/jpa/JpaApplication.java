@@ -50,8 +50,16 @@ public class JpaApplication implements CommandLineRunner{
 		//courseRepository.playWithEntityManager();
 		
 		/**********************************************Student Repository************************/
+		logger.info("\n**********************************************Student Repository************************\n");
 		logger.info("Creating Student with Passport ");
-		
 		studentRepository.saveStudentWithPassport();
+		
+		logger.info("\n**********************************************Course Repository************************\n");
+		
+		
+		/*********************************************Course Repository*********************************/
+		courseRepository.addReviewtoCourse();
+		
+		
 	}
 }
