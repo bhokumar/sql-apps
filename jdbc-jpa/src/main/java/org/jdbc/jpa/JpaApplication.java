@@ -1,12 +1,16 @@
 package org.jdbc.jpa;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jdbc.jpa.modal.Course;
+import org.jdbc.jpa.modal.FullTimeEmployee;
+import org.jdbc.jpa.modal.PartTimeEmployee;
 import org.jdbc.jpa.modal.Review;
 import org.jdbc.jpa.modal.Student;
 import org.jdbc.jpa.repositories.CourseRepository;
+import org.jdbc.jpa.repositories.EmployeeRepository;
 import org.jdbc.jpa.repositories.PersonJPARepository;
 import org.jdbc.jpa.repositories.StudentRepository;
 import org.slf4j.Logger;
@@ -29,6 +33,9 @@ public class JpaApplication implements CommandLineRunner{
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
@@ -71,6 +78,11 @@ public class JpaApplication implements CommandLineRunner{
 		reviews.add(new Review("Nice coverage", "4.4"));
 		courseRepository.addReviewtoCourse(11002L,reviews );
 		
+		logger.info("\n**********************************************Employee Repository************************\n");
+		employeeRepository.insert(new FullTimeEmployee("Tim", new BigDecimal("60000")));
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("100")));
+		logger.info("All Full Time Employees --> {} ", employeeRepository.retreiveAllFullTimeEmployees());
 		
+		logger.info("All Part Time Employees --> {} ", employeeRepository.retreiveAllPartTimeEmployees());
 	}
 }
