@@ -3,9 +3,12 @@ package org.jdbc.jpa.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.jdbc.jpa.JpaApplication;
 import org.jdbc.jpa.modal.Course;
-import org.junit.Before;
+import org.jdbc.jpa.modal.Review;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +28,8 @@ public class CourseRepositoryTest {
 	@Autowired
 	private CourseRepository repository;
 	
+	@Autowired
+	private EntityManager entityManager;
 
 	@Ignore
 	@Test
@@ -53,5 +58,20 @@ public class CourseRepositoryTest {
 	@DirtiesContext
 	public void playWithEntityManager() {
 		repository.playWithEntityManager();
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveReviewsForCourse() {
+		Course course = repository.findbyId(11001L);
+		logger.info("{}", course.getReviews());
+	}
+	
+	
+	@Test
+	@Transactional
+	public void retrieveCourseForreview() {
+		Review review = entityManager.find(Review.class, 50001L);
+		logger.info("{}", review.getCourse());
 	}
 }

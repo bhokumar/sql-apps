@@ -30,3 +30,8 @@ insert into review(id, rating, description, course_id) values(50004, '4.5', 'Gre
 insert into review(id, rating, description, course_id) values(50005, '4.6', 'Great Course', 11002);
 insert into review(id, rating, description, course_id) values(50006, '4.7', 'Great Course', 11002);
 insert into review(id, rating, description, course_id) values(50007, '4.8', 'Great Course', 11002);
+
+insert into course_student(COURSE_ID, STUDENT_ID) values(11001,20001);
+insert into course_student(COURSE_ID, STUDENT_ID) values(11001,20002);
+insert into course_student(COURSE_ID, STUDENT_ID) values(11001,20003);
+insert into course_student(COURSE_ID, STUDENT_ID) values(11002,20002);

@@ -46,9 +46,18 @@ public class StudentRepositoryTest {
 	@Test
 	@DirtiesContext
 	@Transactional
-	public void RetrievePassportAndStudent() {
+	public void retrievePassportAndStudent() {
 		Passport passport = entityManger.find(Passport.class, 40001L);
 		logger.info("Passport --> {}", passport);
 		logger.info("Student Details are --> {}", passport.getStudent());
+	}
+	
+	@Test
+	@DirtiesContext
+	@Transactional
+	public void retrievePassportAndCourses() {
+		Student student = entityManger.find(Student.class, 20001L);
+		logger.info("Student --> {}", student);
+		logger.info("Course Details are--> {}", student.getCourses());
 	}
 }

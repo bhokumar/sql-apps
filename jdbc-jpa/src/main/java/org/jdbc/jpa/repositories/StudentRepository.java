@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.modal.Passport;
 import org.jdbc.jpa.modal.Student;
 import org.slf4j.Logger;
@@ -74,5 +75,25 @@ public class StudentRepository {
 		// Database operation4
 		student.setName("Bhoopendra Rathore");
 		//Persistence context Student++, Passport++
+	}
+	
+	public void insertStudent() {
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 250 steps");
+		entityManager.persist(course);
+		entityManager.persist(student);
+		course.addStudent(student);
+		student.addCourse(course);
+		entityManager.persist(course);
+		
+	}
+	
+	public void insertStudent(Student student, Course course) {
+		entityManager.persist(course);
+		entityManager.persist(student);
+		course.addStudent(student);
+		student.addCourse(course);
+		entityManager.persist(course);
+		
 	}
 }

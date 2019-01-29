@@ -1,5 +1,11 @@
 package org.jdbc.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jdbc.jpa.modal.Course;
+import org.jdbc.jpa.modal.Review;
+import org.jdbc.jpa.modal.Student;
 import org.jdbc.jpa.repositories.CourseRepository;
 import org.jdbc.jpa.repositories.PersonJPARepository;
 import org.jdbc.jpa.repositories.StudentRepository;
@@ -53,12 +59,17 @@ public class JpaApplication implements CommandLineRunner{
 		logger.info("\n**********************************************Student Repository************************\n");
 		logger.info("Creating Student with Passport ");
 		studentRepository.saveStudentWithPassport();
+		studentRepository.insertStudent(new Student("Jack"), new Course("Services in 150 steps"));
 		
 		logger.info("\n**********************************************Course Repository************************\n");
 		
 		
 		/*********************************************Course Repository*********************************/
 		courseRepository.addReviewtoCourse();
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("Awsome Couse", "4.3"));
+		reviews.add(new Review("Nice coverage", "4.4"));
+		courseRepository.addReviewtoCourse(11002L,reviews );
 		
 		
 	}

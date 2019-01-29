@@ -1,5 +1,7 @@
 package org.jdbc.jpa.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -72,5 +74,16 @@ public class CourseRepository {
 		
 		entityManager.persist(review1);
 		entityManager.persist(review2);
+	}
+	
+	public void addReviewtoCourse(Long courseId, List<Review> reviews) {
+		Course course = findbyId(courseId);
+		logger.info("Reviews --> {}", course.getReviews());
+		
+		reviews.forEach(review -> {
+			course.addReview(review);
+			review.setCourse(course);
+			entityManager.persist(review);
+		});
 	}
 }
