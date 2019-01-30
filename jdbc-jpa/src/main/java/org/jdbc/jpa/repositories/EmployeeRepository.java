@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.jdbc.jpa.modal.Employee;
 import org.jdbc.jpa.modal.FullTimeEmployee;
+import org.jdbc.jpa.modal.PartTimeEmployee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -25,10 +26,11 @@ public class EmployeeRepository {
 	}
 	
 	public List<FullTimeEmployee> retreiveAllFullTimeEmployees(){
-		return entityManager.createQuery("Select e from Employee e", FullTimeEmployee.class).getResultList();
+		return entityManager.createQuery("Select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
 	}
 	
-	public List<FullTimeEmployee> retreiveAllPartTimeEmployees(){
-		return entityManager.createQuery("Select e from Employee e", FullTimeEmployee.class).getResultList();
+	public List<PartTimeEmployee> retreiveAllPartTimeEmployees(){
+		logger.info("Log levels");
+		return entityManager.createQuery("Select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
 	}
 }

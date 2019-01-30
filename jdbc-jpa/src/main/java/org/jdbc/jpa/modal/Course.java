@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @NamedQueries(value = { @NamedQuery(name = "queryGetAllCourses", query = "Select c from Course c"),
 		@NamedQuery(name = "queryLikeName", query = "Select c from Course c where name like '%R'") })
@@ -36,6 +38,7 @@ public class Course {
 		joinColumns = @JoinColumn(name = "COURSE_ID"), 
 		inverseJoinColumns = @JoinColumn(name = "STUDENT_ID")
 	)
+	@JsonIgnore
 	private List<Student> students = new ArrayList<>();
 
 	@UpdateTimestamp
@@ -90,6 +93,6 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", name=" + name + "]";
+		return "\nCourse [id=" + id + ", name=" + name + "]";
 	}
 }

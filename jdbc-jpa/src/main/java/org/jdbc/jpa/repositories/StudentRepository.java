@@ -2,7 +2,6 @@ package org.jdbc.jpa.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.modal.Passport;
@@ -10,6 +9,7 @@ import org.jdbc.jpa.modal.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional

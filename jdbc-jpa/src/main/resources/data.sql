@@ -14,6 +14,22 @@ insert into person(id, name, location, birth_date) values(10003, 'Jack', 'London
 
 insert into course(id, name, last_updatetime, creation_time) values(11001,'Angular', sysdate(), sysdate());
 insert into course(id, name, last_updatetime, creation_time ) values(11002,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11003,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11004,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11005,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11006,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11007,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11008,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11009,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11010,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11011,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11012,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11013,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11014,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11015,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11016,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11017,'React', sysdate(), sysdate());
+insert into course(id, name, last_updatetime, creation_time ) values(11018,'React', sysdate(), sysdate());
 
 insert into passport(id, number) values(40001, 'E123456');
 insert into passport(id, number) values(40002, 'N123457');
