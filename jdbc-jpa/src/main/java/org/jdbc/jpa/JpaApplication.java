@@ -4,10 +4,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.jdbc.jpa.modal.Address;
 import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.modal.FullTimeEmployee;
 import org.jdbc.jpa.modal.PartTimeEmployee;
 import org.jdbc.jpa.modal.Review;
+import org.jdbc.jpa.modal.ReviewRating;
 import org.jdbc.jpa.modal.Student;
 import org.jdbc.jpa.repositories.CourseRepository;
 import org.jdbc.jpa.repositories.EmployeeRepository;
@@ -74,8 +78,8 @@ public class JpaApplication implements CommandLineRunner{
 		/*********************************************Course Repository*********************************/
 		courseRepository.addReviewtoCourse();
 		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("Awsome Couse", "4.3"));
-		reviews.add(new Review("Nice coverage", "4.4"));
+		reviews.add(new Review("Awsome Couse", ReviewRating.FIVE));
+		reviews.add(new Review("Nice coverage", ReviewRating.FOUR));
 		courseRepository.addReviewtoCourse(11002L,reviews );
 		
 		logger.info("\n**********************************************Employee Repository************************\n");
@@ -84,5 +88,9 @@ public class JpaApplication implements CommandLineRunner{
 		logger.info("All Full Time Employees --> {} ", employeeRepository.retreiveAllFullTimeEmployees());
 		
 		logger.info("All Part Time Employees --> {} ", employeeRepository.retreiveAllPartTimeEmployees());
+		courseRepository.deleteById(11001);
+		
+		logger.info("Course after delete --> {} ", courseRepository.findbyId(11001L));
+		
 	}
 }

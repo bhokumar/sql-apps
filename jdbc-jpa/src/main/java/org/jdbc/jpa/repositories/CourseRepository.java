@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.jdbc.jpa.modal.Course;
 import org.jdbc.jpa.modal.Review;
+import org.jdbc.jpa.modal.ReviewRating;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -64,8 +65,8 @@ public class CourseRepository {
 	public void addReviewtoCourse() {
 		Course course = findbyId(11001L);
 		logger.info("Reviews --> {}", course.getReviews());
-		Review review1 = new Review("Great HandsOn", "5");
-		Review review2 =new Review("Hatsoff", "5");
+		Review review1 = new Review("Great HandsOn", ReviewRating.FIVE);
+		Review review2 =new Review("Hatsoff", ReviewRating.FOUR);
 		course.addReview(review1);
 		course.addReview(review2);
 		

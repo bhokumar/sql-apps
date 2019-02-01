@@ -1,4 +1,4 @@
-package org.jdbc.jpa.jpql;
+package org.jdbc.jpa.repositories;
 
 import java.util.List;
 import java.util.Optional;

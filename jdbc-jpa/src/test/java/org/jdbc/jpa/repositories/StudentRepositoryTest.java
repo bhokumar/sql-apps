@@ -1,9 +1,10 @@
-package org.jdbc.jpa.jpql;
+package org.jdbc.jpa.repositories;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.jdbc.jpa.JpaApplication;
+import org.jdbc.jpa.modal.Address;
 import org.jdbc.jpa.modal.Passport;
 import org.jdbc.jpa.modal.Student;
 import org.jdbc.jpa.repositories.StudentRepository;
@@ -31,7 +32,7 @@ public class StudentRepositoryTest {
 	@Test
 	@DirtiesContext
 	@Transactional
-	public void RetrieveStudentAndPassportDetails() {
+	public void retrieveStudentAndPassportDetails() {
 		Student student = entityManger.find(Student.class, 20001L);
 		logger.info("Student --> {}", student);
 		logger.info("Passport Details are --> {}", student.getPassport());
@@ -58,6 +59,18 @@ public class StudentRepositoryTest {
 	public void retrievePassportAndCourses() {
 		Student student = entityManger.find(Student.class, 20001L);
 		logger.info("Student --> {}", student);
+		logger.info("Course Details are--> {}", student.getCourses());
+	}
+	
+	
+	@Test
+	@DirtiesContext
+	@Transactional
+	public void persistStudentAndAddress() {
+		Student student = new Student("Anand");
+		student.setAddress(new Address("line1", "Line2", "Noida"));
+		entityManger.persist(student);
+		logger.info("Student --> {}", entityManger.find(Student.class, 2L));
 		logger.info("Course Details are--> {}", student.getCourses());
 	}
 }

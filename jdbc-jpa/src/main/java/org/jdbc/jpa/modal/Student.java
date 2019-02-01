@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,9 @@ public class Student {
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private Passport passport;
+	
+	@Embedded
+	private Address address;
 		
 	public Student() {
 	}
@@ -68,6 +72,14 @@ public class Student {
 	
 	public void removeCourse(Course course) {
 		this.courses.remove(course);
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
